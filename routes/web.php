@@ -32,28 +32,28 @@ Route::namespace('Web')->group(function()
     
 
 
-    Route::prefix('/tasks')->group(function(){
+    Route::prefix('/exercises')->group(function(){
 
         //index
-        Route::get('/','ExerciseController@index')->name('tasks.index');
+        Route::get('/','ExerciseController@index')->name('exercises.index');
     
         //add
-        Route::get('/add','ExerciseController@add')->name('tasks.add');
+        Route::get('/add','ExerciseController@add')->name('exercises.add');
     
         //store
-        Route::post('/store','ExerciseController@store')->name('tasks.store');
+        Route::post('/store','ExerciseController@store')->name('exercises.store');
     
-        //{task}
-        Route::get('/{task}','ExerciseController@show')->name('tasks.show');
+        //{exercise}
+        Route::get('/{exercise}','ExerciseController@show')->name('exercises.show');
     
-        //{task}/edit
-        Route::get('/{task}/edit','ExerciseController@edit')->name('tasks.edit');
+        //{exercise}/edit
+        Route::get('/{exercise}/edit','ExerciseController@edit')->name('exercises.edit');
     
-        //{task}
-        Route::put('/{task}','ExerciseController@update')->name('tasks.update');
+        //{exercise}
+        Route::put('/{exercise}','ExerciseController@update')->name('exercises.update');
     
-        //{task}
-        Route::delete('/{task}','ExerciseController@delete')->name('tasks.delete');
+        //{exercise}
+        Route::delete('/{exercise}','ExerciseController@delete')->name('exercises.delete');
     });
 
 

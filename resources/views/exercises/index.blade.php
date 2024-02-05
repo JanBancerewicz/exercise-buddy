@@ -1,10 +1,10 @@
 @extends('layouts.template')
 
-@section('title', 'To-do app')
+@section('title', 'Exercise helper app')
 
 @section('content')
     <div class="col-sm-12 col-md-8 offset-md-2">
-    @include('tasks.partial.nav')
-    @include('tasks.partial.list')
+    @include('exercises.partial.nav')
+    @include('exercises.partial.list')
     </div> 
 @endsection

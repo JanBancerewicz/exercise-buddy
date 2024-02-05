@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 class ExerciseController extends Controller
 {
     /**
-     * Show all tasks.
+     * Show all exercises.
      *
      * @return string
      */
@@ -30,67 +30,67 @@ class ExerciseController extends Controller
         )->orderBy('updated_at','DESC')
         ->get();
 
-        return view('tasks.index', [
+        return view('exercises.index', [
             'activeExercises'       => $activeExercises,
             'completedExercises'    => $completedExercises,
         ]);
     }
 
     /**
-     * Show form for new task.
+     * Show form for new exercise.
      *
      * @return string
      */
     public function add(){
-        return view('tasks.add',[
+        return view('exercises.add',[
             'defaultStatus' => Exercise::getStatus('Active')
         ]);
     }
 
     /**
-     * Store new task.
+     * Store new exercise.
      *
      * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
      */
     public function store(StoreExerciseRequest $request){
 
         return redirect(
-            route('tasks.show',
-                ['task' => Exercise::create($request->validated())]
+            route('exercises.show',
+                ['exercise' => Exercise::create($request->validated())]
             )
         );
     }
 
     /**
-     * Show a single task.
+     * Show a single exercise.
      *
-     * @param Exercise $task
+     * @param Exercise $exercise
      * @return string
      */
-    public function show(Exercise $task){
-        return view('tasks.show', ['task'=> $task]);
+    public function show(Exercise $exercise){
+        return view('exercises.show', ['exercise'=> $exercise]);
     }
 
     /**
-     * Show edit form for a single task.
+     * Show edit form for a single exercise.
      *
-     * @param Exercise $task
+     * @param Exercise $exercise
      * @return string
      */
-    public function edit(Exercise $task){
-        return view('tasks.edit', [
-            'task' => $task
+    public function edit(Exercise $exercise){
+        return view('exercises.edit', [
+            'exercise' => $exercise
         ]);
     }
 
     /**
-     * Update a single task
+     * Update a single exercise
      *
-     * @param Exercise $task
+     * @param Exercise $exercise
      * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
      */
-    public function update(UpdateExerciseRequest $request, Exercise $task){
-        if($task->update($request->validated()))
+    public function update(UpdateExerciseRequest $request, Exercise $exercise){
+        if($exercise->update($request->validated()))
         {
             $request->session()->flash('status', [
                 'success' => true,
@@ -104,20 +104,20 @@ class ExerciseController extends Controller
         }
 
         return redirect(
-            route('tasks.show',
-                ['task' => $task]
+            route('exercises.show',
+                ['exercise' => $exercise]
             )
         );
     }
 
     /**
-     * Delete a single task.
+     * Delete a single exercise.
      *
-     * @param Exercise $task
+     * @param Exercise $exercise
      * @return string
      */
-    public function delete(Request $request, Exercise $task){
-        if($task->delete())
+    public function delete(Request $request, Exercise $exercise){
+        if($exercise->delete())
         {
             $request->session()->flash('status', [
                 'success' => true,
@@ -131,7 +131,7 @@ class ExerciseController extends Controller
         }
 
         return redirect(
-            route('tasks.index')
+            route('exercises.index')
         );
     }
 }

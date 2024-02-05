@@ -2,9 +2,9 @@
     <div class="row py-5">
         <div class="col-sm-12 col-lg-8 offset-lg-2">
             <p>
-                <a href="{{ route('tasks.index') }}"> &larr; Main page</a>
+                <a href="{{ route('exercises.index') }}"> &larr; Main page</a>
             </p>
-            <form action="{{ route('tasks.store') }}" method="POST" novalidate>
+            <form action="{{ route('exercises.store') }}" method="POST" novalidate>
                 <div class="input-group mb-3">
                     <span class="input-group-text">Exercise title</span>
                     <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"

@@ -1,6 +1,6 @@
 <div class="container">
     <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="tasks-active" role="tabpanel">
+        <div class="tab-pane fade show active" id="exercises-active" role="tabpanel">
             <div class="row">
                 @if (session()->has('status'))
                     <div class="col-sm-12 col-lg-12 offset-lg-3">
@@ -18,7 +18,7 @@
                                 {{ $activeExercise->updated_at->format('Y-m-d') }}<br />
                                 {{ $activeExercise->updated_at->format('H:i') }}
                                 <div class="btn-group-horizontal" role="group">
-                                    <form class="btn" action="{{ route('tasks.update', ['task' => $activeExercise]) }}"
+                                    <form class="btn" action="{{ route('exercises.update', ['exercise' => $activeExercise]) }}"
                                         method="POST" novalidate>
                                         <input type="hidden" name="title" value="{{ $activeExercise->title }}">
                                         <input type="hidden" name="content" value="{{ $activeExercise->content }}">
@@ -42,15 +42,15 @@
                                         <ul class="dropdown-menu">
                                             <li>
                                                 <a class="dropdown-item"
-                                                    href="{{ route('tasks.show', ['task' => $activeExercise]) }}">Show
+                                                    href="{{ route('exercises.show', ['exercise' => $activeExercise]) }}">Show
                                                     details</a>
                                             </li>
                                             <li>
                                                 <a class="dropdown-item"
-                                                    href="{{ route('tasks.edit', ['task' => $activeExercise]) }}">Edit</a>
+                                                    href="{{ route('exercises.edit', ['exercise' => $activeExercise]) }}">Edit</a>
                                             </li>
                                             <li>
-                                                <form action="{{ route('tasks.delete', ['task' => $activeExercise]) }}"
+                                                <form action="{{ route('exercises.delete', ['exercise' => $activeExercise]) }}"
                                                     method="POST" novalidate>
                                                     @method('DELETE')
                                                     @csrf
@@ -73,12 +73,12 @@
                     </div>
                 @empty
                     <div class="col-sm-12">
-                        <p>All tasks are completed</p>
+                        <p>All exercises are completed</p>
                     </div>
                 @endforelse
             </div>
         </div>
-        <div class="tab-pane fade" id="tasks-completed" role="tabpanel">
+        <div class="tab-pane fade" id="exercises-completed" role="tabpanel">
             <div class="row">
                 @forelse ($completedExercises as $completedExercise)
                     <div class="col-sm-12 col-lg-12">
@@ -89,7 +89,7 @@
                                 {{ $completedExercise->updated_at->format('H:i') }}
                                 <div class="btn-group-horizontal" role="group">
                                     <form class="btn"
-                                        action="{{ route('tasks.update', ['task' => $completedExercise]) }}" method="POST"
+                                        action="{{ route('exercises.update', ['exercise' => $completedExercise]) }}" method="POST"
                                         novalidate>
                                         <input type="hidden" name="title" value="{{ $completedExercise->title }}">
                                         <input type="hidden" name="content" value="{{ $completedExercise->content }}">
@@ -112,16 +112,16 @@
                                         <ul class="dropdown-menu">
                                             <li>
                                                 <a class="dropdown-item"
-                                                    href="{{ route('tasks.show', ['task' => $completedExercise]) }}">Show
+                                                    href="{{ route('exercises.show', ['exercise' => $completedExercise]) }}">Show
                                                     details</a>
                                             </li>
                                             <li>
                                                 <a class="dropdown-item"
-                                                    href="{{ route('tasks.edit', ['task' => $completedExercise]) }}">Edit
+                                                    href="{{ route('exercises.edit', ['exercise' => $completedExercise]) }}">Edit
                                                 </a>
                                             </li>
                                             <li>
-                                                <form action="{{ route('tasks.delete', ['task' => $completedExercise]) }}"
+                                                <form action="{{ route('exercises.delete', ['exercise' => $completedExercise]) }}"
                                                     method="POST" novalidate>
                                                     @method('DELETE')
                                                     @csrf
@@ -144,7 +144,7 @@
                     </div>
                 @empty
                     <div class="col-sm-12">
-                        <p>No tasks are marked as complete</p>
+                        <p>No exercises are marked as complete</p>
                     </div>
                 @endforelse
             </div>

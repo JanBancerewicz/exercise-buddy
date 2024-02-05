@@ -10,13 +10,13 @@ class SiteController extends Controller
 {
 
     /**
-     * Show all tasks.
+     * Show all exercises.
      *
      * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
      */
     public function index(){
         return redirect(
-            route('tasks.index'),301
+            route('exercises.index'),301
         );
     }
 

@@ -1,24 +1,24 @@
 @extends('layouts.template')
 
-@section('title', 'Edit task')
+@section('title', 'Edit exercise')
 
 @section('content')
     <div class="containter">
         <div class="row py-5">
             <div class="col-sm-12 col-lg-8 offset-lg-2">
                 <p>
-                    <a href="{{ route('tasks.index') }}"> &larr; Main page</a>
+                    <a href="{{ route('exercises.index') }}"> &larr; Main page</a>
                 </p>
                 <p>
-                    <a href="{{ route('tasks.show', ['task' => $task]) }}"> &larr; Back to task <b>{{$task->title}}</b></a>
+                    <a href="{{ route('exercises.show', ['exercise' => $exercise]) }}"> &larr; Back to exercise <b>{{$exercise->title}}</b></a>
                 </p>
-                <form action="{{ route('tasks.update', ['task' => $task]) }}" method="POST" novalidate>
+                <form action="{{ route('exercises.update', ['exercise' => $exercise]) }}" method="POST" novalidate>
                     @method('PUT')
                     @csrf
                     <div class="input-group mb-3">
                         <span class="input-group-text">Exercise title</span>
                         <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
-                            name="title" placeholder="What to do..." value="{{ old('title', $task->title) }}" />
+                            name="title" placeholder="What to do..." value="{{ old('title', $exercise->title) }}" />
                         @error('title')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -28,7 +28,7 @@
                     <div class="input-group mb-3">
                         <span class="input-group-text">Content:</span>
                         <textarea class="form-control @error('content') is-invalid @enderror" rows="5" id="content" name="content"
-                            placeholder="Description..." maxlength="1000">{{ old('content', $task->content) }}</textarea>
+                            placeholder="Description..." maxlength="1000">{{ old('content', $exercise->content) }}</textarea>
                         @error('content')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -38,9 +38,9 @@
                         
                     <div class="input-group mb-3">
                         <span class="input-group-text">Category</span>
-                            <select class="form-select @error('category') is-invalid @enderror" id="category" name="category" value="{{ old('category', $task->category) }}" >
+                            <select class="form-select @error('category') is-invalid @enderror" id="category" name="category" value="{{ old('category', $exercise->category) }}" >
                                 @php
-                                    $selectedOption = old('category', $task->category);
+                                    $selectedOption = old('category', $exercise->category);
                                 @endphp
                                 <option>Select a difficulty...</option>
                                 <option value="0" @if($selectedOption == 0) selected @endif>Warm-up</option>
@@ -59,7 +59,7 @@
                     <div class="input-group mb-3">
                         <span class="input-group-text">Weight</span>
                         <input type="number" min="0" max="100" class="form-control @error('weight') is-invalid @enderror" id="weight"
-                            name="weight" placeholder="Weight in kg..." value="{{ old('weight', $task->weight) }}" />
+                            name="weight" placeholder="Weight in kg..." value="{{ old('weight', $exercise->weight) }}" />
                         @error('weight')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -70,7 +70,7 @@
                     <div class="input-group mb-3">
                         <span class="input-group-text">Reps</span>
                         <input type="number" min="0" max="100" class="form-control @error('reps') is-invalid @enderror" id="reps"
-                            name="reps" placeholder="Number of reps..." value="{{ old('reps', $task->reps) }}" />
+                            name="reps" placeholder="Number of reps..." value="{{ old('reps', $exercise->reps) }}" />
                         @error('reps')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -81,7 +81,7 @@
                     <div class="input-group mb-3">
                         <span class="input-group-text">Sets</span>
                         <input type="number" min="0" max="10" class="form-control @error('sets') is-invalid @enderror" id="sets"
-                            name="sets" placeholder="Number of sets..." value="{{ old('sets', $task->sets) }}"/>
+                            name="sets" placeholder="Number of sets..." value="{{ old('sets', $exercise->sets) }}"/>
                         @error('sets')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -90,9 +90,9 @@
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">Rest Time</span>
-                            <select class="form-select @error('restTime') is-invalid @enderror" id="restTime" name="restTime" value="{{ old('restTime', $task->restTime) }}" >
+                            <select class="form-select @error('restTime') is-invalid @enderror" id="restTime" name="restTime" value="{{ old('restTime', $exercise->restTime) }}" >
                                 @php
-                                    $selectedOption = old('restTime', $task->restTime);
+                                    $selectedOption = old('restTime', $exercise->restTime);
                                 @endphp
                                 <option>Select the rest time...</option>
                                 <option value="0" @if($selectedOption == 0) selected @endif>0s</option>
@@ -113,8 +113,8 @@
                            $activeStatus = \App\Models\Exercise::getStatus('Active');
                            $completedStatus = \App\Models\Exercise::getStatus('Completed');
                         @endphp
-                        <option value="{{$activeStatus}}" @if($activeStatus == $task->status) selected @endif >Active</option>
-                        <option value="{{$completedStatus}}" @if($completedStatus == $task->status) selected @endif>Completed</option>
+                        <option value="{{$activeStatus}}" @if($activeStatus == $exercise->status) selected @endif >Active</option>
+                        <option value="{{$completedStatus}}" @if($completedStatus == $exercise->status) selected @endif>Completed</option>
                       </select>
                         
                     <br />

@@ -13,14 +13,14 @@ class CreateUniqueIdToken
     use Dispatchable, SerializesModels;
 
 
-    protected $task;
+    protected $exercise;
 
     /**
      * Create a new job instance.
      */
-    public function __construct(Exercise $task)
+    public function __construct(Exercise $exercise)
     {
-        $this->task = $task;
+        $this->exercise = $exercise;
     }
 
     /**
@@ -34,26 +34,26 @@ class CreateUniqueIdToken
 
         $matchingTokens = $this->getRelatedIdTokens($idToken);
         
-        $idTokenExists = $matchingTokens->contains(function(Exercise $task, int $index) use($idToken){
-            return $task->idToken == $idToken;
+        $idTokenExists = $matchingTokens->contains(function(Exercise $exercise, int $index) use($idToken){
+            return $exercise->idToken == $idToken;
         });
         
         if($idTokenExists){
             $matchingCount = $matchingTokens->count();
             $idToken = "$idToken-$matchingCount";
         }
-            $this->task->idToken = $idToken;
+            $this->exercise->idToken = $idToken;
     }
 
     protected function getCurrentExerciseIdToken(){
-        return Str::slug($this->task->title);
+        return Str::slug($this->exercise->title);
          
     }
 
     protected function getRelatedIdTokens(string $idToken){
         return Exercise::select('idToken')
         ->where('idToken', "LIKE", "$idToken%")
-        ->where('id', '<>', $this->task->id)
+        ->where('id', '<>', $this->exercise->id)
         ->get();
     }
 }
