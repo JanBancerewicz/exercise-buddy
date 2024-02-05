@@ -2,11 +2,11 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Task;
+use App\Models\Exercise;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UpdateTaskRequest extends FormRequest
+class UpdateExerciseRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,7 +28,7 @@ class UpdateTaskRequest extends FormRequest
             'content'=>'nullable|string|max:1000',
             'status'=>[
                 'required',
-                Rule::in(Task::getAvailableStatuses())
+                Rule::in(Exercise::getAvailableStatuses())
             ],
             'category'=>'required|integer|min:0|max_digits:9',
             'weight'=>'nullable|integer|max:100',

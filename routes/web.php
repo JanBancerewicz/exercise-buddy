@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\Task;
+use App\Models\Exercise;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -35,25 +35,25 @@ Route::namespace('Web')->group(function()
     Route::prefix('/tasks')->group(function(){
 
         //index
-        Route::get('/','TaskController@index')->name('tasks.index');
+        Route::get('/','ExerciseController@index')->name('tasks.index');
     
         //add
-        Route::get('/add','TaskController@add')->name('tasks.add');
+        Route::get('/add','ExerciseController@add')->name('tasks.add');
     
         //store
-        Route::post('/store','TaskController@store')->name('tasks.store');
+        Route::post('/store','ExerciseController@store')->name('tasks.store');
     
         //{task}
-        Route::get('/{task}','TaskController@show')->name('tasks.show');
+        Route::get('/{task}','ExerciseController@show')->name('tasks.show');
     
         //{task}/edit
-        Route::get('/{task}/edit','TaskController@edit')->name('tasks.edit');
+        Route::get('/{task}/edit','ExerciseController@edit')->name('tasks.edit');
     
         //{task}
-        Route::put('/{task}','TaskController@update')->name('tasks.update');
+        Route::put('/{task}','ExerciseController@update')->name('tasks.update');
     
         //{task}
-        Route::delete('/{task}','TaskController@delete')->name('tasks.delete');
+        Route::delete('/{task}','ExerciseController@delete')->name('tasks.delete');
     });
 
 

@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Models\Task;
-use App\Observers\TaskObserver;
+use App\Models\Exercise;
+use App\Observers\ExerciseObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -39,6 +39,6 @@ class EventServiceProvider extends ServiceProvider
     }
 
     protected function observeModels(){
-        Task::observe(TaskObserver::class);
+        Exercise::observe(ExerciseObserver::class);
     }
 }

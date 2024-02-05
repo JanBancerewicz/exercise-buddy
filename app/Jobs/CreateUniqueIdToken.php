@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Models\Task;
+use App\Models\Exercise;
 
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\SerializesModels;
@@ -18,7 +18,7 @@ class CreateUniqueIdToken
     /**
      * Create a new job instance.
      */
-    public function __construct(Task $task)
+    public function __construct(Exercise $task)
     {
         $this->task = $task;
     }
@@ -30,11 +30,11 @@ class CreateUniqueIdToken
      */
     public function handle()
     {
-        $idToken=$this->getCurrentTaskIdToken();
+        $idToken=$this->getCurrentExerciseIdToken();
 
         $matchingTokens = $this->getRelatedIdTokens($idToken);
         
-        $idTokenExists = $matchingTokens->contains(function(Task $task, int $index) use($idToken){
+        $idTokenExists = $matchingTokens->contains(function(Exercise $task, int $index) use($idToken){
             return $task->idToken == $idToken;
         });
         
@@ -45,13 +45,13 @@ class CreateUniqueIdToken
             $this->task->idToken = $idToken;
     }
 
-    protected function getCurrentTaskIdToken(){
+    protected function getCurrentExerciseIdToken(){
         return Str::slug($this->task->title);
          
     }
 
     protected function getRelatedIdTokens(string $idToken){
-        return Task::select('idToken')
+        return Exercise::select('idToken')
         ->where('idToken', "LIKE", "$idToken%")
         ->where('id', '<>', $this->task->id)
         ->get();

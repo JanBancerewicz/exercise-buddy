@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 
 
-use App\Http\Requests\StoreTaskRequest;
-use App\Http\Requests\UpdateTaskRequest;
-use App\Models\Task;
+use App\Http\Requests\StoreExerciseRequest;
+use App\Http\Requests\UpdateExerciseRequest;
+use App\Models\Exercise;
 use Illuminate\Http\Request;
 
-class TaskController extends Controller
+class ExerciseController extends Controller
 {
     /**
      * Show all tasks.
@@ -18,21 +18,21 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $activeTasks = Task::where(
+        $activeExercises = Exercise::where(
             'status',
-            Task::getStatus('Active')
+            Exercise::getStatus('Active')
         )->orderBy('updated_at','DESC')
         ->get();
 
-        $completedTasks = Task::where(
+        $completedExercises = Exercise::where(
             'status',
-            Task::getStatus('Completed')
+            Exercise::getStatus('Completed')
         )->orderBy('updated_at','DESC')
         ->get();
 
         return view('tasks.index', [
-            'activeTasks'       => $activeTasks,
-            'completedTasks'    => $completedTasks,
+            'activeExercises'       => $activeExercises,
+            'completedExercises'    => $completedExercises,
         ]);
     }
 
@@ -43,7 +43,7 @@ class TaskController extends Controller
      */
     public function add(){
         return view('tasks.add',[
-            'defaultStatus' => Task::getStatus('Active')
+            'defaultStatus' => Exercise::getStatus('Active')
         ]);
     }
 
@@ -52,11 +52,11 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
      */
-    public function store(StoreTaskRequest $request){
+    public function store(StoreExerciseRequest $request){
 
         return redirect(
             route('tasks.show',
-                ['task' => Task::create($request->validated())]
+                ['task' => Exercise::create($request->validated())]
             )
         );
     }
@@ -64,20 +64,20 @@ class TaskController extends Controller
     /**
      * Show a single task.
      *
-     * @param Task $task
+     * @param Exercise $task
      * @return string
      */
-    public function show(Task $task){
+    public function show(Exercise $task){
         return view('tasks.show', ['task'=> $task]);
     }
 
     /**
      * Show edit form for a single task.
      *
-     * @param Task $task
+     * @param Exercise $task
      * @return string
      */
-    public function edit(Task $task){
+    public function edit(Exercise $task){
         return view('tasks.edit', [
             'task' => $task
         ]);
@@ -86,15 +86,15 @@ class TaskController extends Controller
     /**
      * Update a single task
      *
-     * @param Task $task
+     * @param Exercise $task
      * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
      */
-    public function update(UpdateTaskRequest $request, Task $task){
+    public function update(UpdateExerciseRequest $request, Exercise $task){
         if($task->update($request->validated()))
         {
             $request->session()->flash('status', [
                 'success' => true,
-                'message' => 'Task updated successsfully'
+                'message' => 'Exercise updated successsfully'
             ]);
         }else{
             $request->session()->flash('status', [
@@ -113,15 +113,15 @@ class TaskController extends Controller
     /**
      * Delete a single task.
      *
-     * @param Task $task
+     * @param Exercise $task
      * @return string
      */
-    public function delete(Request $request, Task $task){
+    public function delete(Request $request, Exercise $task){
         if($task->delete())
         {
             $request->session()->flash('status', [
                 'success' => true,
-                'message' => 'Task deleted successsfully'
+                'message' => 'Exercise deleted successsfully'
             ]);
         }else{
             $request->session()->flash('status', [

@@ -3,12 +3,12 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\Task;
+use App\Models\Exercise;
 
 return new class extends Migration
 {
     /**
-     * Task model.
+     * Exercise model.
      * 
      * @property string $title
      * @property string $idToken
@@ -22,12 +22,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tasks', function (Blueprint $table) {
+        Schema::create('exercises', function (Blueprint $table) {
             $table->id();
             $table->string('title',100);
             $table->string('idToken')->unique();
             $table->string('content', 1000)->nullable();
-            $table->enum('status', Task::getAvailableStatuses());
+            $table->enum('status', Exercise::getAvailableStatuses());
             $table->integer('category');
             $table->integer('weight')->nullable();
             $table->integer('reps');

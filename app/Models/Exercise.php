@@ -8,7 +8,7 @@ use Illuminate\Testing\Exceptions\InvalidArgumentException;
 
 
 /**
- * Task model.
+ * Exercise model.
  * 
  * @property string $title
  * @property string $idToken
@@ -20,7 +20,7 @@ use Illuminate\Testing\Exceptions\InvalidArgumentException;
  * @property int $sets
  * @property int $restTime
  */
-class Task extends Model
+class Exercise extends Model
 {
     use HasFactory;
 

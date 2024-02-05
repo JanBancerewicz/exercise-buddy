@@ -17,10 +17,10 @@
                         @csrf
 
                         @if ($task->matchStatus('Active'))
-                            <input type="hidden" name="status" value="{{ Task::getStatus('Completed') }}">
+                            <input type="hidden" name="status" value="{{ Exercise::getStatus('Completed') }}">
                             <button type="submit" class="btn btn-success">Mark as completed</button>
                         @else
-                            <input type="hidden" name="status" value="{{ Task::getStatus('Active') }}">
+                            <input type="hidden" name="status" value="{{ Exercise::getStatus('Active') }}">
                             <button type="submit" class="btn btn-success">Mark as active</button>
                         @endif
                     </form>
@@ -43,11 +43,11 @@
                     <p class="card-text">
                         Status:
                         @switch($task->status)
-                            @case(\App\Models\Task::getStatus('Active'))
+                            @case(\App\Models\Exercise::getStatus('Active'))
                                 <b class="alert-success">Active</b>
                             @break
 
-                            @case(\App\Models\Task::getStatus('Completed'))
+                            @case(\App\Models\Exercise::getStatus('Completed'))
                                 <b class="alert-warning">Completed</b>
                             @break
 

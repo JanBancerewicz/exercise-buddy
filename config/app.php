@@ -184,7 +184,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
-        'Task' => App\Models\Task::class,
+        'Exercise' => App\Models\Exercise::class,
 
     ])->toArray(),
 

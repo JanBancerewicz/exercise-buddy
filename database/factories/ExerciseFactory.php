@@ -3,13 +3,13 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Task;
+use App\Models\Exercise;
 
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Task>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Exercise>
  */
-class TaskFactory extends Factory
+class ExerciseFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -26,7 +26,7 @@ class TaskFactory extends Factory
                 fake()->numberBetween(15,30)
             ),
             'status' => fake()->randomElement(
-                Task::getAvailableStatuses()
+                Exercise::getAvailableStatuses()
             ),
             'category' => fake()->numberBetween(0,5),
             'weight' => fake()->randomElement([5, 8, 10, 12, 15, 17, 20]),

@@ -2,14 +2,14 @@
 
 namespace App\Observers;
 use App\Jobs\CreateUniqueIdToken;
-use App\Models\Task;
+use App\Models\Exercise;
 
-class TaskObserver
+class ExerciseObserver
 {
-    public function creating(Task $task){
+    public function creating(Exercise $task){
         CreateUniqueIdToken::dispatch($task);
     }
-    public function updating(Task $task){
+    public function updating(Exercise $task){
         CreateUniqueIdToken::dispatch($task);
     }
 

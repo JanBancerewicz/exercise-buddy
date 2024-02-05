@@ -6,7 +6,7 @@
             </p>
             <form action="{{ route('tasks.store') }}" method="POST" novalidate>
                 <div class="input-group mb-3">
-                    <span class="input-group-text">Task title</span>
+                    <span class="input-group-text">Exercise title</span>
                     <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
                         name="title" placeholder="What to do..." value="{{ old('title') }}" />
                     @error('title')
