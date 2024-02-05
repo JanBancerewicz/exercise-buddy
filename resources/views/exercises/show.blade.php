@@ -13,6 +13,11 @@
                     <form action="{{ route('exercises.update', ['exercise' => $exercise]) }}" method="POST" novalidate>
                         <input type="hidden" name="title" value="{{ $exercise->title }}">
                         <input type="hidden" name="content" value="{{ $exercise->content }}">
+                        <input type="hidden" name="category" value="{{ $exercise->category }}">
+                        <input type="hidden" name="weight" value="{{ $exercise->weight }}">
+                        <input type="hidden" name="reps" value="{{ $exercise->reps }}">
+                        <input type="hidden" name="sets" value="{{ $exercise->sets }}">
+                        <input type="hidden" name="restTime" value="{{ $exercise->restTime }}">
                         @method('PUT')
                         @csrf
 

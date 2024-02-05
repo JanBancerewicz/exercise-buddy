@@ -3,7 +3,7 @@
         <div class="tab-pane fade show active" id="exercises-active" role="tabpanel">
             <div class="row">
                 @if (session()->has('status'))
-                    <div class="col-sm-12 col-lg-12 offset-lg-3">
+                    <div class="col-sm-12 col-lg-12">
                         <div class="alert @if (session('status')['success']) alert-success @else alert-danger @endif">
                             {{ session('status')['message'] }}
                         </div>
@@ -67,7 +67,27 @@
                                 @if ($activeExercise->content)
                                     <p class="card-text">{{ $activeExercise->content }}</p>
                                 @endif
-
+                                <br/>
+                                <div class="container row">
+                                    <div class="col-sm-6 col-lg-6">
+                                    <table class="table table-bordered border-primary ">
+                                        <tr><td><b>Reps</td><td><b>{{ $activeExercise->reps }}</b></td></tr>
+                                        <tr><td><b>Sets</b></td><td><b>{{ $activeExercise->sets }}</b></td></tr>
+                                    </table>
+                                    </div>
+                                    <div class="col-sm-4 col-lg-4">
+                                        <table class="table table-bordered border-dark ">
+                                            <tr><td><b>Weight</b></td><td>
+                                                @if ($activeExercise->weight)
+                                                {{ $activeExercise->weight }}
+                                                @else
+                                                None
+                                                @endif
+                                            </td></tr>
+                                        <tr><td><b>Rest time</b></td><td>{{ $activeExercise->restTime }}s</td></tr>
+                                    </table>  
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -94,11 +114,11 @@
                                         <input type="hidden" name="title" value="{{ $completedExercise->title }}">
                                         <input type="hidden" name="content" value="{{ $completedExercise->content }}">
                                         <input type="hidden" name="status" value="{{ Exercise::getStatus('Active') }}">
-                                        <input type="hidden" name="category" value="{{ $activeExercise->category }}">
-                                        <input type="hidden" name="weight" value="{{ $activeExercise->weight }}">
-                                        <input type="hidden" name="reps" value="{{ $activeExercise->reps }}">
-                                        <input type="hidden" name="sets" value="{{ $activeExercise->sets }}">
-                                        <input type="hidden" name="restTime" value="{{ $activeExercise->restTime }}">
+                                        <input type="hidden" name="category" value="{{ $completedExercise->category }}">
+                                        <input type="hidden" name="weight" value="{{ $completedExercise->weight }}">
+                                        <input type="hidden" name="reps" value="{{ $completedExercise->reps }}">
+                                        <input type="hidden" name="sets" value="{{ $completedExercise->sets }}">
+                                        <input type="hidden" name="restTime" value="{{ $completedExercise->restTime }}">
                                         
                                         @method('PUT')
                                         @csrf
@@ -138,7 +158,27 @@
                                 @if ($completedExercise->content)
                                     <p class="card-text">{{ $completedExercise->content }}</p>
                                 @endif
-
+                                <br/>
+                                <div class="container row">
+                                    <div class="col-sm-6 col-lg-6">
+                                    <table class="table table-bordered border-primary ">
+                                        <tr><td><b>Reps</td><td><b>{{ $completedExercise->reps }}</b></td></tr>
+                                        <tr><td><b>Sets</b></td><td><b>{{ $completedExercise->sets }}</b></td></tr>
+                                    </table>
+                                    </div>
+                                    <div class="col-sm-4 col-lg-4">
+                                        <table class="table table-bordered border-dark ">
+                                            <tr><td><b>Weight</b></td><td>
+                                                @if ($completedExercise->weight)
+                                                {{ $completedExercise->weight }}
+                                                @else
+                                                None
+                                                @endif
+                                            </td></tr>
+                                        <tr><td><b>Rest time</b></td><td>{{ $completedExercise->restTime }}s</td></tr>
+                                    </table>  
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
