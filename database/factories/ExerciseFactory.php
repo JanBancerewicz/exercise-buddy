@@ -34,5 +34,6 @@ class ExerciseFactory extends Factory
             'sets' => fake()->numberBetween(1,4),
             'restTime' => fake()->randomElement([30, 60, 90, 120])
         ];
+
     }
 }
