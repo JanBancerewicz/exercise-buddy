@@ -75,8 +75,9 @@
 
 1. Open the application in your web browser.
 2. Set all exercises as "active".
-3. If you wish to customize your training plan furthermore, create new exercises using the "Add exercises" button or edit.
+3. If you wish to customize your training plan furthermore, create new exercises using the "Add exercises" button or edit option.
 4. Mark exercises as "completed" as soon as you finish them.
+5. Feel free to delete redundant exercises or edit them, so they match your preferences.
 
 ## Acknowledgments
 
