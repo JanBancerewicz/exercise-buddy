@@ -54,6 +54,9 @@ Route::namespace('Web')->group(function()
     
         //{exercise}
         Route::delete('/{exercise}','ExerciseController@delete')->name('exercises.delete');
+
+        //setall
+        Route::get('/setall/{param}','ExerciseController@setall')->name('exercises.setall');
     });
 
 

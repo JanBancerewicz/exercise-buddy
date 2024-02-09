@@ -52,13 +52,15 @@
     php artisan key:generate
     ```
 
-6. Run migrations and seed the database:
+6. (Optional) Change the default database seed value at resources/sqlka.sql:
+
+7. Run migrations and seed the database:
 
     ```bash
     php artisan migrate --seed
     ```
 
-7. Start the development server:
+8. Start the development server:
 
     ```bash
     php artisan serve
@@ -69,8 +71,9 @@
 ## Usage
 
 1. Open the application in your web browser.
-2. Create new tasks using the "Add task" button.
-3. Mark your tasks as either "completed" or "active".
+2. Set all exercises as "active".
+3. If you wish to customize your training plan furthermore, create new exercises using the "Add exercises" button or edit.
+4. Mark exercises as "completed" as soon as you finish them.
 
 ## Acknowledgments
 

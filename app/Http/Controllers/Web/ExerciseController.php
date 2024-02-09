@@ -134,4 +134,44 @@ class ExerciseController extends Controller
             route('exercises.index')
         );
     }
+
+
+    /**
+     * Show all exercises.
+     *
+     * @return string
+     */
+    public function setall(int $param)
+    {
+        if($param == 1){
+            $activeExercises = Exercise::where(
+                'status',
+                Exercise::getStatus('Active')
+            )->get();
+
+            if (!empty($activeExercises)){
+                foreach ($activeExercises as $activeExercise){
+                    $activeExercise->update(['status' => Exercise::getStatus('Completed')]);
+                }
+            }
+        }else{
+            $completedExercises = Exercise::where(
+                'status',
+                Exercise::getStatus('Completed')
+            )->get();
+
+            if (!empty($completedExercises)){
+                foreach ($completedExercises as $completedExercise){
+                    $completedExercise->update(['status' => Exercise::getStatus('Active')]);
+                }
+            }
+        }
+
+        return redirect(
+            route('exercises.index')
+        );
+
+        // return "hejka".$param;
+    }
+
 }

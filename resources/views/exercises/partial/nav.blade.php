@@ -16,11 +16,22 @@
 
         </ul>
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-            <li class="nav-item" role="presentation">
+            <li class="nav-item mx-1" role="presentation">
+                <a class="btn btn-info" href="{{ route('exercises.setall', "0") }}">
+                    Start training
+                </a>
+            </li>
+            <li class="nav-item mx-1" role="presentation">
+                <a class="btn btn-danger" href="{{ route('exercises.setall', "1")}}">
+                    Stop training
+                </a>
+            </li>
+            <li class="nav-item mx-1" role="presentation">
                 <a class="btn btn-primary" href="{{ route('exercises.add') }}">
                     Add exercise
                 </a>
             </li>
+            
         </ul>
     </nav>
 </div>
