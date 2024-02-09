@@ -63,7 +63,9 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title">{{ $activeExercise->title }}</h5>
+                                <a href="{{ route('exercises.show', ['exercise' => $activeExercise]) }}">
+                                    <h5 class="card-title">{{ $activeExercise->title }}</h5>
+                                </a>
                                 @if ($activeExercise->content)
                                     <p class="card-text">{{ $activeExercise->content }}</p>
                                 @endif
@@ -154,7 +156,9 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title">{{ $completedExercise->title }}</h5>
+                                <a href="{{ route('exercises.show', ['exercise' => $completedExercise]) }}">
+                                    <h5 class="card-title">{{ $completedExercise->title }}</h5>
+                                </a>
                                 @if ($completedExercise->content)
                                     <p class="card-text">{{ $completedExercise->content }}</p>
                                 @endif

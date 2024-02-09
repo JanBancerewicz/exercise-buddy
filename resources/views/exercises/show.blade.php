@@ -45,6 +45,28 @@
                     @if ($exercise->content)
                         <p class="card-text">{{ $exercise->content }}</p>
                     @endif
+
+                    <div class="container row">
+                        <div class="col-sm-6 col-lg-6">
+                        <table class="table table-bordered border-primary ">
+                            <tr><td><b>Reps</td><td><b>{{ $exercise->reps }}</b></td></tr>
+                            <tr><td><b>Sets</b></td><td><b>{{ $exercise->sets }}</b></td></tr>
+                        </table>
+                        </div>
+                        <div class="col-sm-4 col-lg-4">
+                            <table class="table table-bordered border-dark ">
+                                <tr><td><b>Weight</b></td><td>
+                                    @if ($exercise->weight)
+                                    {{ $exercise->weight }}
+                                    @else
+                                    None
+                                    @endif
+                                </td></tr>
+                            <tr><td><b>Rest time</b></td><td>{{ $exercise->restTime }}s</td></tr>
+                        </table>  
+                        </div>
+                    </div>
+
                     <p class="card-text">
                         Status:
                         @switch($exercise->status)
