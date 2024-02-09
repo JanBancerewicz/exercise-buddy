@@ -1,6 +1,9 @@
 # Laravel Exercise-buddy App
 
-## Introduction
+## Preview
+
+![ss1](https://github.com/JanBancerewicz/exercise-buddy/assets/79080628/01206260-ea67-453d-9099-46579f028d56)
+
 
 ## Requirements
 
