@@ -77,7 +77,12 @@
 2. Set all exercises as "active".
 3. If you wish to customize your training plan furthermore, create new exercises using the "Add exercises" button or edit option.
 4. Mark exercises as "completed" as soon as you finish them.
-5. Feel free to delete redundant exercises or edit them, so they match your preferences.
+5. Feel free to delete redundant exercises or edit them so they match your preferences.
+
+
+**Add exercise preview:**
+   ![image](https://github.com/JanBancerewicz/exercise-buddy/assets/79080628/c78e80d6-9d2d-4c49-aeb1-46543e71aad7)
+
 
 ## Acknowledgments
 
